@@ -1,0 +1,5 @@
+.wrapper {
+  /* Width is driven by the boardWidth prop passed to react-chessboard.
+     No width/max-width here — the Chessboard component is self-sizing. */
+  flex-shrink: 0;
+}

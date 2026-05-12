@@ -1,0 +1,97 @@
+.panel {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ff8a80;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.evalRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.label {
+  font-size: 12px;
+  color: #9e9e9e;
+  min-width: 70px;
+}
+
+.move {
+  font-family: 'Roboto Mono', monospace, monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.eval {
+  font-family: 'Roboto Mono', monospace, monospace;
+  font-size: 14px;
+  color: #bdbdbd;
+}
+
+.classification {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.hintBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #90caf9;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hintBtn:hover {
+  border-color: #90caf9;
+  background: rgba(144, 202, 249, 0.08);
+}
+
+.hint {
+  font-size: 14px;
+  color: #90caf9;
+  font-family: 'Roboto Mono', monospace, monospace;
+}
+
+.continueBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.continueBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
