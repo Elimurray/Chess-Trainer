@@ -54,6 +54,11 @@ const Train = ({ opening, onBack }: TrainProps) => {
   // Play a sound whenever a move is added to history.
   const prevHistLen = useRef(0);
   useEffect(() => {
+    // Reset counter whenever history is cleared (retry or new opening).
+    if (state.history.length === 0) {
+      prevHistLen.current = 0;
+      return;
+    }
     if (state.history.length <= prevHistLen.current) return;
     prevHistLen.current = state.history.length;
 
@@ -72,9 +77,6 @@ const Train = ({ opening, onBack }: TrainProps) => {
       }
     }
   }, [state.history.length, state.status, state.history, sounds]);
-
-  // Reset sound counter on new opening.
-  useEffect(() => { prevHistLen.current = 0; }, [opening]);
 
   const lastMove =
     state.history.length > 0
@@ -96,6 +98,10 @@ const Train = ({ opening, onBack }: TrainProps) => {
     state.lastDeviation !== null && state.history.length > 0
       ? state.history[state.history.length - 1].uci.slice(2, 4)
       : null;
+
+  const isEngineTurn =
+    state.status === 'playing' &&
+    (opening.colour === 'white' ? state.moveIndex % 2 === 1 : state.moveIndex % 2 === 0);
 
   const isPerfect = state.deviationCount === 0;
 
@@ -129,7 +135,7 @@ const Train = ({ opening, onBack }: TrainProps) => {
               onMove={makeMove}
               lastMove={lastMove}
               deviationTo={deviationToSquare}
-              disabled={state.status === 'deviation' || state.status === 'complete'}
+              disabled={state.status === 'deviation' || state.status === 'complete' || isEngineTurn}
             />
             <div className={styles.turnIndicator}>
               {state.status === 'playing' &&
