@@ -64,21 +64,28 @@ npm run dev
 
 The import script fetches from the [Lichess open-source openings database](https://github.com/lichess-org/chess-openings) and generates a TypeScript stub with the moves pre-filled.
 
+**For fully extended training lines** (recommended), use `build-opening.mjs` which automatically extends each variation to training depth using the Lichess Opening Explorer:
+
 ```bash
-# Search by name (case-insensitive, partial match)
+# 1. Get a free Lichess API token (no permissions needed):
+#    https://lichess.org/account/oauth/token/create
+
+# 2. Build all named variations of an opening, extended to 20 moves each:
+node scripts/build-opening.mjs "Accelerated Dragon" --colour black --token lip_xxx --output src/data/openings/acceleratedDragon.ts
+
+# Custom depth, min game threshold:
+node scripts/build-opening.mjs "Ruy Lopez: Berlin" --colour black --token lip_xxx --depth 24 --min-games 100
+```
+
+**For a quick stub** (short lines from the Lichess ECO database, no token needed):
+
+```bash
 node scripts/import-opening.mjs "Ruy Lopez" --colour black
-
-# Search by ECO code
-node scripts/import-opening.mjs C65 --colour black
-
-# Get multiple variations
-node scripts/import-opening.mjs "Queen's Gambit" --colour white --max 5
-
-# Pipe directly to a file
+node scripts/import-opening.mjs C65 --colour black --max 5
 node scripts/import-opening.mjs "King's Indian" --colour black > src/data/openings/kingsIndian.ts
 ```
 
-After generating the stub, fill in `description` and `keyIdeas`, then register the opening:
+After generating either way, fill in `description` and `keyIdeas`, then register the opening:
 
 ```ts
 // src/data/openings/index.ts
