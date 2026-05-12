@@ -12,6 +12,9 @@ dist-ssr/
 public/stockfish-nnue-16-single.js
 public/stockfish-nnue-16-single.wasm
 
+# Lichess sound files (downloaded by scripts/download-sounds.mjs)
+public/sounds/
+
 # Environment variables
 .env
 .env.local

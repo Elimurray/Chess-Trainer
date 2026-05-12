@@ -28,6 +28,14 @@ A focused opening trainer built with React 18 + TypeScript. Play through curated
 npm install
 ```
 
+### Download sound files (one-time)
+
+```bash
+node scripts/download-sounds.mjs
+```
+
+This fetches `Move.mp3`, `Capture.mp3`, `Check.mp3`, and `GenericNotify.mp3` from the [Lichess open-source repository](https://github.com/lichess-org/lila) into `public/sounds/`.
+
 ### Copy Stockfish WASM files (one-time)
 
 ```bash
